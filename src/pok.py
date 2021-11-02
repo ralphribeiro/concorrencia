@@ -5,13 +5,12 @@ from shutil import rmtree, copyfileobj
 
 from time import perf_counter_ns
 
-
 def timer(func):
     def inner(*args):
         inicio = perf_counter_ns()
         r = func(*args)
         fim = perf_counter_ns()
-        print(f'{func.__name__}(): {(fim-inicio)/10**6}ms')
+        print(f'{(fim-inicio)/10**9}s')
         return r
     return inner
 
@@ -54,6 +53,6 @@ def main():
 
     for p in poks:
         download_sprite(p)
-
+        print('Pokemon baixado: ', p)
 
 main()

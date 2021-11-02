@@ -14,10 +14,10 @@ from aiohttp import ClientSession
 from requests import get
 
 
-# logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.INFO)
 
 base_url = 'https://pokeapi.co/api/v2/'
-n_poks = 250
+n_poks = 101
 poks = get(urljoin(base_url, f'pokemon/?limit={n_poks}')).json()['results']
 
 folder_name = 'sprites'
