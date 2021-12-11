@@ -60,7 +60,7 @@ async def pipilini(*funcs):
     return inner
 
 
-async def delegate(url_sprite: str, name: str):
+async def get_pokemons(url_sprite: str, name: str):
     download_path = p_join(_path, name)
 
     async with ClientSession() as session:
@@ -88,7 +88,7 @@ async def spin(msg):
 async def processing():
     spinner = asyncio.create_task(spin('carregando...'))
     await asyncio.gather(
-        *[asyncio.create_task(delegate(p['url'], p['name'])) for p in poks]
+        *[asyncio.create_task(get_pokemons(p['url'], p['name'])) for p in poks]
     )
     spinner.cancel()
 
